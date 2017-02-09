@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>FS Web - JS Jam</title>
+    <link href = "css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata|Shadows+Into+Light" rel="stylesheet" type="text/css">
+</head>
+<body>
+<img class="hidden" id="death" src="imgs/death.jpg">
+<div id="container">
+    <header>Asylum Escape</header>
+    <nav>
+        <h3 id="controls"><b>Asylum Escape!</b></h3>
+<!--         <br>
+        <p>Mouse-> X:<span id="x">0</span> | Y:<span id="y">0</span></p>
+        <br>
+        <p>Room #<span id="room_num"></span></p> -->
+        <br>
+        <p id="controls"><strong><u>CONTROLS</u></strong><br>
+            <strong>Arrow Keys:</strong> North, East, South, West Movements<br>
+            <strong>Search Bar:</strong> Type nouns to look for the key to escape!<br>
+            <strong>Shift Key:</strong> Puts your character into hiding. You must be hidden if the monster is entering the room!<br>
+        </p>
+        <p><center>
+        <img src="imgs/arrow.png" width="200" height="150" alt=""/></center> </p>
+        <br>
+    </nav>
+    <section>
+        <canvas id="canvas" width="500" height="500" style= "background-color: #000000;" ></canvas>
+        <button class="mybutton" id="escape">ESCAPE!</button>
+    </section>
+
+    <div id="navRight">
+       <p>Selected: <span id="searchable"></span></p>
+         <h3>Inventory</h3>
+         <div id="inventory">
+            
+        </div>
+    </div>
+    <footer>
+        <img height="50px" width="50px" class="hidden" id="hiding" src="imgs/hiding.png">
+    </footer>
+
+</div> <!--//Closes container-->
+    <script src="js/utils.js" type="text/javascript"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
