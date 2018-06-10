@@ -1,8 +1,13 @@
 'use strict';
 window.addEventListener("load", (e)=> 
 {
+    document.getElementById("startGame").addEventListener("click", function()
+    {
+        var myApp = Game.getInstance();
+        document.getElementById("startGame").disabled = true;
+    });
     console.log("Application Started");
-    var myApp = Game.getInstance();
+    
 });
 
 class Game 
@@ -54,8 +59,7 @@ class Game
         var monsterStartRooms =[16,9,10,2];
         House.monster = new Monster();
         House.monster.room = monsterStartRooms[Math.ceil(Math.random()*monsterStartRooms.length)-1];
-        House.monster.room = 16;
-        console.log("Monster started in..." + House.monster.room);
+        //console.log("Monster started in..." + House.monster.room);
 
         //Bringing the player into the game
         House.player = new Player();
@@ -66,6 +70,7 @@ class Game
         Game.house.hideItems();       
         Game.screen.addEventListener("click", Game.house.doSearch);
         document.getElementById("escape").addEventListener("click", this.escape);
+        
         //Begin the animation cycles
         Game.drawFrame();
 
@@ -88,11 +93,6 @@ class Game
         {
             return;
         }
-        /*
-            document.getElementById("x").innerHTML = Game.mouse.x;
-            document.getElementById("y").innerHTML = Game.mouse.y;
-            document.getElementById("room_num").innerHTML = House.player.room;
-        */
         window.requestAnimationFrame(Game.drawFrame);
         Game.ctx.clearRect(0,0, Game.screen.width, Game.screen.height);
         Game.ctx.globalCompositeOperation = "source-over";
@@ -101,18 +101,20 @@ class Game
         Game.flashLight.x = Game.mouse.x;
         Game.flashLight.y = Game.mouse.y;
         var overItem = false;
+
+
         for(var i=0; i < Game.house.rooms[House.player.room].objects.length; i++)
         {
             var obj = Game.house.rooms[House.player.room].objects[i];
            
-            if(Game.getDistance(obj) < Game.flashLight.lightValue)
+            if(Game.getDistance(obj) < Game.flashLight.lightValue && House.player.hiding == false)
             {
                 overItem = true;
 
                 document.getElementById("searchable").innerHTML = obj.name;
             }
         }
-        if(overItem == false)
+        if(overItem == false || House.player.hiding == true)
         {
             document.getElementById("searchable").innerHTML = "";
             
@@ -642,8 +644,11 @@ class FlashLight
         this.lightValue = 40;
 
         //Size of the flash light goes in here!
-
-        if(House.player.lightSource == "lighter")
+        if(House.player.hiding == true)
+        {
+            lightValue = 0;
+        }
+        else if(House.player.lightSource == "lighter")
         {
             lightValue = 40;
         }
