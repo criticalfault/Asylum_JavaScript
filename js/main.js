@@ -14,7 +14,7 @@ class Game
 {
     constructor() 
     {
-        console.log("game Created");
+        console.log("Game Object Created");
         Game.images = [];
         Game.house = null;
         Game.screen = document.getElementById("canvas");
@@ -201,35 +201,37 @@ class House
         this.rooms = [];
         House.monster = null;
         House.player = null;
+        House.openRooms = [7,8,9,10,11,12,13,14,15,16];
     }
 
     hideKey()
     {
-        var x = Math.ceil(Math.random() * 10)+6;
+        var index = Math.floor(Math.random()*House.openRooms.length);
+        var x = House.openRooms[index];
+        House.openRooms.splice(index,1);
         this.rooms[x].hasKey = true;
         this.rooms[x].itemLocation = this.rooms[x].searchables[Math.ceil(Math.random() *this.rooms[x].searchables.length-1)];
     }
 
     hideItems()
     {
-        var x = Math.ceil(Math.random() *14)+2;
-
+        var index = Math.floor(Math.random()*House.openRooms.length);
+        var x = House.openRooms[index];
+        House.openRooms.splice(index,1);
+        
         //Hiding the Candle
-        if(this.rooms[x].hasKey != true && this.rooms[x].hasFlashlight != true)
-        {
-            this.rooms[x].hasCandle = true;
-            this.rooms[x].itemLocation = this.rooms[x].searchables[Math.ceil(Math.random() *this.rooms[x].searchables.length-1)];
-            console.log("Candle was placed");
-        }
+        this.rooms[x].hasCandle = true;
+        this.rooms[x].itemLocation = this.rooms[x].searchables[Math.ceil(Math.random() *this.rooms[x].searchables.length-1)];
+        
 
-        x = Math.ceil(Math.random() *14)+2;
+        index = Math.floor(Math.random()*House.openRooms.length);
+        x = House.openRooms[index];
+        House.openRooms.splice(index,1);
+       
         //Hiding the Flashlight
-        if(this.rooms[x].hasKey != true && this.rooms[x].hasCandle != true)
-        {
-            this.rooms[x].hasFlashlight = true;
-            this.rooms[x].itemLocation = this.rooms[x].searchables[Math.ceil(Math.random() *this.rooms[x].searchables.length-1)];
-            console.log("Flashlight was placed");
-        }
+        this.rooms[x].hasFlashlight = true;
+        this.rooms[x].itemLocation = this.rooms[x].searchables[Math.ceil(Math.random() *this.rooms[x].searchables.length-1)];
+
     }
 
     moveMonster()
@@ -279,7 +281,7 @@ class House
             }
         }
 
-        console.log("Monster now in room #: "+House.monster.room);
+        //console.log("Monster now in room #: "+House.monster.room);
         
         if(House.monster.room == House.player.room)
         {
