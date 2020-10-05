@@ -8,10 +8,10 @@ canvas:hover
 }
 
 #startGame{
-	width:480px;
-	margin-left: -25px;
-	height:20px;
-	margin: 0 auto;
+	text-align: center;
+	margin-left: 71px;
+	width: 200px;
+	height: 50px;
 }
 
 .gameStarted
