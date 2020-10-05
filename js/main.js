@@ -552,7 +552,7 @@ class Player
             return;
         }
 
-        if(code == "ArrowRight")
+        if(code == "ArrowRight" || code == "KeyD")
         {
             if(Game.house.rooms[this.room].directions[1] != -1)
             {
@@ -560,7 +560,7 @@ class Player
                 this.room = Game.house.rooms[this.room].directions[1];
             }
         }   
-        else if(code == "ArrowLeft")
+        else if(code == "ArrowLeft" || code == "KeyA")
         {
             if(Game.house.rooms[this.room].directions[3] != -1)
             {
@@ -568,7 +568,7 @@ class Player
                 this.room = Game.house.rooms[this.room].directions[3];
             }
         }   
-        else if(code == "ArrowUp")
+        else if(code == "ArrowUp" || code == "KeyW")
         {
             if(Game.house.rooms[this.room].directions[0] != -1)
             {
@@ -576,7 +576,7 @@ class Player
                 this.room = Game.house.rooms[this.room].directions[0];        
             }
         }  
-        else if(code == "ArrowDown")
+        else if(code == "ArrowDown" || code == "KeyS")
         {
             if(Game.house.rooms[this.room].directions[2] != -1)
             {
