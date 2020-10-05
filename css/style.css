@@ -8,7 +8,8 @@ canvas:hover
 }
 
 #startGame{
-	width:100%;
+	width:480px;
+	margin-left: -25px;
 	height:20px;
 	margin: 0 auto;
 }
@@ -57,8 +58,7 @@ body{
 	width: 1100px;
 	height: 700px;
 	margin: 0 auto;
-	font-family: 'Inconsolata',;
-	/*--font-family: 'Shadows Into Light', cursive;--*/
+	font-family: 'Inconsolata';
 	background: repeating-linear-gradient(
 				-55deg,
 				#222,
@@ -87,7 +87,7 @@ nav {
 	margin-right: 70px;
     line-height:30px;
     height:607px;
-    width:110px;
+    width:190px;
     float:right;
 	padding-left: 15px;
 	color:rgba(239,233,233,1.00);
